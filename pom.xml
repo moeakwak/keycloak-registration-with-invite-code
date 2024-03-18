@@ -6,7 +6,7 @@
 
     <groupId>com.moeakwak</groupId>
     <artifactId>keycloak-invited-registration</artifactId>
-    <version>0.0.13</version>
+    <version>0.1.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
