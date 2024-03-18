@@ -91,7 +91,32 @@ public class InviteCodeValidation implements FormAction, FormActionFactory, Serv
 
     @Override
     public void buildPage(FormContext context, LoginFormsProvider form) {
-        form.setAttribute("inviteCodeRequired", true).createForm("register-invite-code.ftl");
+        form.setAttribute("inviteCodeRequired", true);
+        form.addScript("""
+        <script>
+            var form = document.getElementById('kc-register-form');
+            if (form) {
+                var inviteCodeGroup = document.createElement('div');
+                inviteCodeGroup.className = 'form-group';
+                
+                var inviteCodeLabel = document.createElement('label');
+                inviteCodeLabel.setAttribute('for', 'invite_code');
+                inviteCodeLabel.className = 'control-label';
+                inviteCodeLabel.innerText = '邀请码';
+                
+                var inviteCodeInput = document.createElement('input');
+                inviteCodeInput.type = 'text';
+                inviteCodeInput.id = 'invite_code';
+                inviteCodeInput.name = 'invite_code';
+                inviteCodeInput.className = 'form-control';
+                
+                inviteCodeGroup.appendChild(inviteCodeLabel);
+                inviteCodeGroup.appendChild(inviteCodeInput);
+                
+                form.insertBefore(inviteCodeGroup, form.lastChild);
+            }
+        </script>
+        """);
     }
 
     @Override

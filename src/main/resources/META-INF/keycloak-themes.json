@@ -1,0 +1,6 @@
+{
+  "themes": [{
+    "name" : "keycloak.withInviteCode",
+    "types": [ "login" ]
+  }]
+}
