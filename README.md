@@ -6,7 +6,9 @@ This implementation offers a simple and easy-to-configured method for restrictin
 
 ## Compatibility
 
-The implementation has been simply tested and confirmed to work with Keycloak version 24.0.1.
+The implementation has been tested and confirmed to work with Keycloak version 26.6.2.
+
+The SPI still uses Keycloak's `form-action` SPI. Keycloak reports this as an internal SPI at startup, so future Keycloak upgrades should be verified by rebuilding the provider and testing the registration flow again.
 
 ## Installation and Setup
 
@@ -23,7 +25,9 @@ For keycload in docker, copy JAR file to `/opt/keycloak/providers` and run `dock
 
 - Restart your Keycloak server. Post-restart, navigate to the **Provider Info** tab within the master realm's info page. Here, you should find `invite-code-validation` listed under the `form-action` section.
 
-- Transition to the realm of interest. Under **Realm Settings > Themes**, modify the **Login theme** to `keycloak.withInviteCode` .
+- Transition to the realm of interest. Under **Realm Settings > Themes**, modify the **Login theme** to one of the bundled invite-code themes:
+  - `keycloak.withInviteCode`: theme based on the classic Keycloak login theme.
+  - `keycloak.v2.withInviteCode`: theme based on the Keycloak v2 login theme, tested with Keycloak 26.6.2.
 
 - Lastly, configure the authentication flow under **Authentication > Flows**. You need to duplicate the default registration flow and add step named "Invite Code Validation", and place it under the "Registration User Profile Creation" step. Below is an example configuration image:
 

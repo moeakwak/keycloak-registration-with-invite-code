@@ -1,6 +1,12 @@
 {
-  "themes": [{
-    "name" : "keycloak.withInviteCode",
-    "types": [ "login" ]
-  }]
+  "themes": [
+    {
+      "name": "keycloak.withInviteCode",
+      "types": [ "login" ]
+    },
+    {
+      "name": "keycloak.v2.withInviteCode",
+      "types": [ "login" ]
+    }
+  ]
 }
